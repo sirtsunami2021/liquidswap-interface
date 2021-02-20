@@ -1,5 +1,5 @@
 import React, { useRef } from 'react'
-import { BookOpen, Code, Info, MessageCircle, PieChart } from 'react-feather'
+import { BookOpen, Code, Info, PieChart } from 'react-feather'
 import styled from 'styled-components'
 import { ReactComponent as MenuIcon } from '../../assets/images/menu.svg'
 import { useActiveWeb3React } from '../../hooks'
@@ -66,9 +66,9 @@ const MenuFlyout = styled.span`
   right: 0rem;
   z-index: 100;
 
-  ${({ theme }) => theme.mediaWidth.upToMedium`
-    top: -17.25rem;
-  `};
+  // ${({ theme }) => theme.mediaWidth.upToMedium`
+  //   top: -17.25rem;
+  // `};
 `
 
 const MenuItem = styled(ExternalLink)`
@@ -85,7 +85,7 @@ const MenuItem = styled(ExternalLink)`
   }
 `
 
-const CODE_LINK = 'https://github.com/Uniswap/uniswap-interface'
+const CODE_LINK = 'https://github.com/sirtsunami2021/liquidswap-interface'
 
 export default function Menu() {
   const { account } = useActiveWeb3React()
@@ -117,10 +117,10 @@ export default function Menu() {
             <Code size={14} />
             Code
           </MenuItem>
-          <MenuItem id="link" href="https://discord.gg/FCfyBSbCU5">
+          {/* <MenuItem id="link" href="https://discord.gg/FCfyBSbCU5">
             <MessageCircle size={14} />
             Discord
-          </MenuItem>
+          </MenuItem> */}
           <MenuItem id="link" href="https://uniswap.info/">
             <PieChart size={14} />
             Analytics

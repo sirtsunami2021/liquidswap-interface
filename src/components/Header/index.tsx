@@ -32,11 +32,11 @@ import UniBalanceContent from './UniBalanceContent'
 import usePrevious from '../../hooks/usePrevious'
 
 const HeaderFrame = styled.div`
-  display: grid;
+  // display: grid;
+  ${({ theme }) => theme.flexRowNoWrap}
   grid-template-columns: 1fr 120px;
   align-items: center;
   justify-content: space-between;
-  align-items: center;
   flex-direction: row;
   width: 100%;
   top: 0;
@@ -96,7 +96,8 @@ const HeaderElement = styled.div`
 `
 
 const HeaderElementWrap = styled.div`
-  display: flex;
+  // display: flex;
+  display: none;
   align-items: center;
 `
 
@@ -111,6 +112,20 @@ const HeaderLinks = styled(Row)`
   ${({ theme }) => theme.mediaWidth.upToMedium`
     padding: 1rem 0 1rem 1rem;
     justify-content: flex-end;
+`};
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    display: none;
+`};
+`
+
+const MenuWrapper = styled.div`
+  display: none;
+  width: 100%;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  padding: 1rem;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    display: flex;
 `};
 `
 
@@ -177,12 +192,22 @@ const BalanceText = styled(Text)`
   `};
 `
 
+const TitleWrapper = styled.div`
+  position: absolute;
+  left: 50%;
+  ${({ theme }) => theme.mediaWidth.upToMedium`
+    left: 10%;
+  `}
+`
+
 const Title = styled.a`
   display: flex;
+  position: relative;
   align-items: center;
   pointer-events: auto;
-  justify-self: flex-start;
-  margin-right: 12px;
+  // justify-self: flex-start;
+  // margin-right: 12px;
+  left: -50%;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     justify-self: center;
   `};
@@ -322,12 +347,14 @@ export default function Header() {
       <Modal isOpen={showUniBalanceModal} onDismiss={() => setShowUniBalanceModal(false)}>
         <UniBalanceContent setShowUniBalanceModal={setShowUniBalanceModal} />
       </Modal>
-      <HeaderRow>
+      <TitleWrapper>
         <Title href=".">
           <UniIcon>
             <img width={'24px'} src={darkMode ? LogoDark : Logo} alt="logo" />
           </UniIcon>
         </Title>
+      </TitleWrapper>
+      <HeaderRow>
         <HeaderLinks>
           <StyledNavLink id={`swap-nav-link`} to={'/swap'}>
             {t('swap')}
@@ -345,16 +372,28 @@ export default function Header() {
           >
             {t('pool')}
           </StyledNavLink>
-          <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
+          {/* <StyledNavLink id={`stake-nav-link`} to={'/uni'}>
             UNI
           </StyledNavLink>
           <StyledNavLink id={`stake-nav-link`} to={'/vote'}>
             Vote
-          </StyledNavLink>
+          </StyledNavLink> */}
+          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.org/'}>
+            About
+          </StyledExternalLink>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.org/docs/v2'}>
+            Docs
+          </StyledExternalLink>
+          <StyledExternalLink id={`stake-nav-link`} href={'https://github.com/sirtsunami2021/liquidswap-interface'}>
+            Code
+          </StyledExternalLink>
           <StyledExternalLink id={`stake-nav-link`} href={'https://uniswap.info'}>
-            Charts <span style={{ fontSize: '11px' }}>↗</span>
+            Charts
           </StyledExternalLink>
         </HeaderLinks>
+        <MenuWrapper>
+          <Menu/>
+        </MenuWrapper>
       </HeaderRow>
       <HeaderControls>
         <HeaderElement>
@@ -402,7 +441,7 @@ export default function Header() {
           <AccountElement active={!!account} style={{ pointerEvents: 'auto' }}>
             {account && userEthBalance ? (
               <BalanceText style={{ flexShrink: 0 }} pl="0.75rem" pr="0.5rem" fontWeight={500}>
-                {userEthBalance?.toSignificant(4)} ETH
+                {userEthBalance?.toSignificant(4)} {chainId === 100 ? 'DAI' : 'ETH'}
               </BalanceText>
             ) : null}
             <Web3Status />

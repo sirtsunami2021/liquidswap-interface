@@ -15,8 +15,13 @@ import { resetMintState } from 'state/mint/actions'
 const Tabs = styled.div`
   ${({ theme }) => theme.flexRowNoWrap}
   align-items: center;
-  border-radius: 3rem;
+  // border-radius: 3rem;
   justify-content: space-evenly;
+  border-bottom: 2px solid ${({ theme }) => theme.secondary2};
+  display: none;
+  ${({ theme }) => theme.mediaWidth.upToSmall`
+    display: flex;
+  `}
 `
 
 const activeClassName = 'ACTIVE'
@@ -34,11 +39,15 @@ const StyledNavLink = styled(NavLink).attrs({
   text-decoration: none;
   color: ${({ theme }) => theme.text3};
   font-size: 20px;
+  padding: 1rem 5rem;
 
   &.${activeClassName} {
-    border-radius: 12px;
+    // border-radius: 12px 12px 0 0;
+    border-radius: 2rem 2rem 0 0;
     font-weight: 500;
     color: ${({ theme }) => theme.text1};
+    background-color: ${({ theme }) => theme.primary2};
+    border: 3px solid ${({ theme }) => theme.secondary2};
   }
 
   :hover,
@@ -59,7 +68,8 @@ const StyledArrowLeft = styled(ArrowLeft)`
 export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
   const { t } = useTranslation()
   return (
-    <Tabs style={{ marginBottom: '20px', display: 'none' }}>
+    <>
+    <Tabs style={{ marginBottom: '20px' }}>
       <StyledNavLink id={`swap-nav-link`} to={'/swap'} isActive={() => active === 'swap'}>
         {t('swap')}
       </StyledNavLink>
@@ -67,6 +77,7 @@ export function SwapPoolTabs({ active }: { active: 'swap' | 'pool' }) {
         {t('pool')}
       </StyledNavLink>
     </Tabs>
+    </>
   )
 }
 
