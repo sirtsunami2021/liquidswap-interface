@@ -86,6 +86,7 @@
     "start-server-and-test": "^1.11.0",
     "styled-components": "^4.2.0",
     "typescript": "^3.8.3",
+    "uniswap-xdai-sdk": "^3.0.2-a3",
     "use-count-up": "^2.2.5",
     "wcag-contrast": "^3.0.0",
     "workbox-core": "^6.1.0",
