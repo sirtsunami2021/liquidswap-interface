@@ -17,7 +17,7 @@ const Tabs = styled.div`
   align-items: center;
   // border-radius: 3rem;
   justify-content: space-evenly;
-  border-bottom: 2px solid ${({ theme }) => theme.secondary2};
+  border-bottom: 2px solid ${({ theme }) => theme.text5};
   display: none;
   ${({ theme }) => theme.mediaWidth.upToSmall`
     display: flex;
@@ -37,7 +37,7 @@ const StyledNavLink = styled(NavLink).attrs({
   outline: none;
   cursor: pointer;
   text-decoration: none;
-  color: ${({ theme }) => theme.text3};
+  color: ${({ theme }) => theme.text5};
   font-size: 20px;
   padding: 1rem 5rem;
 
@@ -46,8 +46,8 @@ const StyledNavLink = styled(NavLink).attrs({
     border-radius: 2rem 2rem 0 0;
     font-weight: 500;
     color: ${({ theme }) => theme.text1};
-    background-color: ${({ theme }) => theme.primary2};
-    border: 3px solid ${({ theme }) => theme.secondary2};
+    background-color: ${({ theme }) => theme.bg1};
+    border: 3px solid ${({ theme }) => theme.bg2};
   }
 
   :hover,

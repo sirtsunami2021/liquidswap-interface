@@ -34,6 +34,8 @@ import usePrevious from '../../hooks/usePrevious'
 const HeaderFrame = styled.div`
   // display: grid;
   ${({ theme }) => theme.flexRowNoWrap}
+  background-color: ${({ theme }) => theme.bg3};
+  box-shadow: 3px 3px 10px ${({ theme }) => theme.bg1}
   grid-template-columns: 1fr 120px;
   align-items: center;
   justify-content: space-between;
@@ -237,7 +239,7 @@ const StyledNavLink = styled(NavLink).attrs({
   color: ${({ theme }) => theme.text2};
   font-size: 1rem;
   width: fit-content;
-  margin: 0 12px;
+  margin: 0 24px;
   font-weight: 500;
 
   &.${activeClassName} {
@@ -264,7 +266,7 @@ const StyledExternalLink = styled(ExternalLink).attrs({
   color: ${({ theme }) => theme.text2};
   font-size: 1rem;
   width: fit-content;
-  margin: 0 12px;
+  margin: 0 24px;
   font-weight: 500;
 
   &.${activeClassName} {

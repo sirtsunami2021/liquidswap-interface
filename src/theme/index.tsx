@@ -48,11 +48,11 @@ export function colors(darkMode: boolean): Colors {
     text5: darkMode ? '#2C2F36' : '#EDEEF2',
 
     // backgrounds / greys
-    bg1: darkMode ? '#212429' : '#FFFFFF',
-    bg2: darkMode ? '#2C2F36' : '#F7F8FA',
-    bg3: darkMode ? '#40444F' : '#EDEEF2',
-    bg4: darkMode ? '#565A69' : '#CED0D9',
-    bg5: darkMode ? '#6C7284' : '#888D9B',
+    bg1: darkMode ? '#060B1B' : '#FFFFFF',
+    bg2: darkMode ? '#0A3051' : '#F7F8FA',
+    bg3: darkMode ? '#204D55' : '#EDEEF2',
+    bg4: darkMode ? '#94B1AF' : '#CED0D9',
+    bg5: darkMode ? '#E6E6EA' : '#888D9B',
 
     //specialty colors
     modalBG: darkMode ? 'rgba(0,0,0,.425)' : 'rgba(0,0,0,0.3)',
@@ -63,7 +63,7 @@ export function colors(darkMode: boolean): Colors {
     primary2: darkMode ? '#46ACC2' : '#FF8CC3',
     primary3: darkMode ? '#42F2F7' : '#FF99C9',
     primary4: darkMode ? '#4B6858' : '#F6DDE8',
-    primary5: darkMode ? '#4D4730' : '#FDEAF1',
+    primary5: darkMode ? '#204D55' : '#FDEAF1',
 
     // color text
     primaryText1: darkMode ? '#42F2F7' : '#ff007a',
@@ -80,7 +80,7 @@ export function colors(darkMode: boolean): Colors {
     green1: '#27AE60',
     yellow1: '#FFE270',
     yellow2: '#F3841E',
-    blue1: '#2172E5'
+    blue1: '#2172E5',
 
     // dont wanna forget these blue yet
     // blue4: darkMode ? '#153d6f70' : '#C4D9F8',
@@ -219,7 +219,8 @@ html {
 export const ThemedGlobalStyle = createGlobalStyle`
 html {
   color: ${({ theme }) => theme.text1};
-  background-color: ${({ theme }) => theme.bg2};
+  // background-color: ${({ theme }) => theme.bg2};
+  ${({ theme }) => `background-image: linear-gradient(to bottom right, ${theme.bg1}, ${theme.bg3}, ${theme.bg4}, ${theme.bg3}, ${theme.bg1})`}
 }
 
 body {
